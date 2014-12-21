@@ -1,4 +1,4 @@
-Router.route('Home', {
+Router.route('Workshops', {
 	path: '/',
 	waitOn: function() {
 		return Meteor.subscribe('Workshops');
@@ -14,7 +14,7 @@ Router.route('Home', {
 	}
 });
 
-Template.Home.helpers({
+Template.Workshops.helpers({
 	tableSettings : function () {
 		return {
 			rowsPerPage: 5,
@@ -23,3 +23,9 @@ Template.Home.helpers({
 		};
 	}
 });
+
+Template.Workshops.events = {
+	'click #newWorkshop': function() {
+		this.navigate('newWorkshop');
+	}
+};

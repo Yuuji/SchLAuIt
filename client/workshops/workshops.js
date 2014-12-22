@@ -1,7 +1,9 @@
 Router.route('Workshops', {
 	path: '/',
 	waitOn: function() {
-		return Meteor.subscribe('Workshops');
+		if (Meteor.userId()) {
+			return Meteor.subscribe('Workshops');
+		}
 	},
 	data: function() {
 		try {

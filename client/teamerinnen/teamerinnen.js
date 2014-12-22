@@ -1,7 +1,9 @@
 Router.route('Teamerinnen', {
 	path: '/teamerinnen',
 	waitOn: function() {
-		return Meteor.subscribe('Teamerinnen');
+		if (Meteor.userId()) {
+			return Meteor.subscribe('Teamerinnen');
+		}
 	},
 	data: function() {
 		return { teamerinnen: Meteor.users.find() };

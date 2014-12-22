@@ -4,7 +4,6 @@ Router.route('Workshops', {
 		return Meteor.subscribe('Workshops');
 	},
 	data: function() {
-		debugger;
 		try {
 			Workshops;
 		} catch (e) {
@@ -26,6 +25,6 @@ Template.Workshops.helpers({
 
 Template.Workshops.events = {
 	'click #newWorkshop': function() {
-		this.navigate('newWorkshop');
+		Router.go('newWorkshop');
 	}
 };

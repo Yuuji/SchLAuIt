@@ -1,0 +1,14 @@
+<template name="NewSchule">
+	<legend>Neue Schule</legend>
+	<form method="POST" role="form">
+		<div class="form-group">
+			{{text_field 'name' required=true}}
+		</div>
+		<div class="form-group">
+			{{text_field 'addresse' required=true}}
+		</div>
+		<div class="form-group">
+			{{submit_button 'Hinzuf&uuml;gen'}}
+		</div>
+	</form>
+</template>

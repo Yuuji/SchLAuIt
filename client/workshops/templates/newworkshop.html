@@ -1,0 +1,20 @@
+<template name="newWorkshop">
+	<legend>Neuer Workshop</legend>
+	<p>Hinweis: Der Name ist ein beliebiger Text zur Identifizierung des Workshops. Zum Beispiel: IGS Mondstra&szlig;e im Januar 2015</p>
+	<form method="POST" role="form">
+		<div class="form-group">
+			{{text_field 'name' required=true}}
+		</div>
+		<div class="form-group">
+			<label for="schule">Schule</label>
+			{{> inputAutocomplete settings=settings id="schule" class="form-control" name="schule"}}
+		</div>
+	</form>
+</template>
+
+<template name="newWorkshopNoMatchSchule">
+	<p>Kein Treffer :(</p>
+	<button id="newSchule" type="button" class="btn btn-default btn-lg">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Neue Schule
+	</button>
+</template>

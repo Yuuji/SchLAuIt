@@ -44,6 +44,20 @@ Template.newWorkshop.rendered = function() {
 
 		$('#schule').on('shown.bs.popover', function () {
 			$('.popover-content input[name=name]').val($('#schule').val());
+			$('.popover-content form').submit(function(ev) {
+				ev.preventDefault();
+				
+				var name = $('.popover-content input[name=name]').val();
+				var id = Schulen.insert({
+					name: name,
+					adresse: $('.popover-content input[name=adresse]').val()
+				});
+
+				$('#schulid').val(id);
+				$('#schule').val(name);
+
+				$('#schule').popover('hide');
+			});
 		});
 };
 

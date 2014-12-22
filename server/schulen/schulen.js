@@ -5,3 +5,13 @@ Meteor.publish('Schulen', function() {
 		return Schulen.find();
 	}
 });
+
+Schulen.allow({
+	'insert': function(userId, doc) {
+		if (Meteor.userId()) {
+			return true;
+		}
+
+		return false;
+	}
+});

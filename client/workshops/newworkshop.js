@@ -56,13 +56,13 @@ Template.newWorkshop.rendered = function() {
 				$('#schulid').val(id);
 				$('#schule').val(name);
 
-				$('#schule').popover('hide');
+				$('#schule').my_popover('hide');
 			});
 		});
 };
 
 Template.newWorkshop.events = {
 	'click #newSchule': function() {
-		$('#schule').popover('show');
+		$('#schule').my_popover('show');
 	}
 };

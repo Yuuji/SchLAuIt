@@ -33,36 +33,10 @@ Router.route('newWorkshop', {
 });
 
 Template.newWorkshop.rendered = function() {
-	    $("#schule").popover({
-			html: true,
-			content: function() {
-				return UI.toHTML(Template.NewSchule);
-			},
+	    $("#schule").newSchule({
+			setName: $('#schule'),
+			setId: $('#schulid'),
 			placement: 'bottom',
-			trigger: 'manual'
+			onElementClick: '#newSchule'
 		});
-
-		$('#schule').on('shown.bs.popover', function () {
-			$('.popover-content input[name=name]').val($('#schule').val());
-			$('.popover-content form').submit(function(ev) {
-				ev.preventDefault();
-				
-				var name = $('.popover-content input[name=name]').val();
-				var id = Schulen.insert({
-					name: name,
-					adresse: $('.popover-content input[name=adresse]').val()
-				});
-
-				$('#schulid').val(id);
-				$('#schule').val(name);
-
-				$('#schule').my_popover('hide');
-			});
-		});
-};
-
-Template.newWorkshop.events = {
-	'click #newSchule': function() {
-		$('#schule').my_popover('show');
-	}
 };

@@ -8,16 +8,16 @@ $.fn.newSchule = function(options) {
 	options.placement = options.placement || 'bottom';
 	options.onElementClick = options.onElementClick || this;
 
-	$(that_).popover({
-		html: true,
+	$(that_).my_popover({
 		content: function() {
 			return UI.toHTML(Template.NewSchule);
 		},
+		target: '#schule',
 		placement: options.placement,
-		trigger: 'manual'
+		title: 'Schule'
 	});
 
-	$(that_).on('shown.bs.popover', function() {
+	$(that_).on('shown.my_popover', function() {
 		$(that_).trigger('shown.newSchule');
 		
 		if (options.setName !== false) {

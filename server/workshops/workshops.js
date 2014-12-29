@@ -5,3 +5,13 @@ Meteor.publish('Workshops', function() {
 		return Workshops.find();
 	}
 });
+
+Workshops.allow({
+	'insert': function(userId, doc) {
+		if (Meteor.userId()) {
+			return true;
+		}
+
+		return false;
+	}
+});

@@ -1,3 +1,5 @@
+var Workshops = new Mongo.Collection('workshops');
+
 Router.route('newWorkshop', {
 	path: '/neuer-workshop',
 	waitOn: function() {
@@ -22,7 +24,9 @@ Router.route('newWorkshop', {
 						matchAll: true,
 						template: Template.newWorkshopSchule,
 						noMatchTemplate: Template.newWorkshopNoMatchSchule,
-						callback: function(doc) { console.log(doc); }
+						callback: function(doc) {
+							$('#schulid').val(doc._id);
+						}
 					}
 				]
 			}
@@ -39,4 +43,24 @@ Template.newWorkshop.rendered = function() {
 			placement: 'bottom',
 			onElementClick: '#newSchule'
 		});
+
+		$('#schule').change(function() {
+			$('#schulid').val('');
+		});
 };
+
+Template.newWorkshop.events({
+	'submit form': function(event) {
+		if ($('#schulid').val()==='') {
+			alert($('<span>Bitte eine Schule ausw&auml;hlen!</span>').text());
+			event.preventDefault();
+			return;
+		}
+
+		var data = SimpleForm.processForm(event.target);
+		Workshops.insert({
+			name: $('#name').val(),
+			schule: $('#schulid').val()
+		});
+	}
+});

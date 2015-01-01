@@ -1,4 +1,4 @@
-var Workshops = new Mongo.Collection('workshops');
+var Workshops = Meteor.getWorkshops();
 
 Router.route('newWorkshop', {
 	path: '/neuer-workshop',

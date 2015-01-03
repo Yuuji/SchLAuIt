@@ -1,14 +1,19 @@
+var workshopId = false;
+
 Router.route('Workshop', {
 	path: '/workshop/:id',
 	waitOn: function() {
 		if (Meteor.userId()) {
 			return [
 				Meteor.subscribe('Workshops'),
-				Meteor.subscribe('Schulen')
+				Meteor.subscribe('Schulen'),
+				Meteor.subscribe('Teamerinnen')
 			];
 		}
 	},
 	data: function() {
+		workshopId = this.params.id;
+
 		var workshop = Meteor.getWorkshops().findOne(this.params.id);
 
 		// status: '', 'success', 'warning', 'danger'
@@ -19,7 +24,29 @@ Router.route('Workshop', {
 			planung: {checked: false, status: ''},
 			feedback: {checked: false, status: ''}
 		};
+
+		if (workshop.verantwortlicher) {
+			status.verantwortlicher.checked = true;
+			status.verantwortlicher.status = 'success';
+		}
 		
 		return {workshop: workshop, status: status};
 	}
 });
+
+Template.Workshop.rendered = function() {
+	$('#verantwortlicher').verantwortlicher({
+		workshop: workshopId,
+		setId: 'input[type=hidden][name=verantwortlicher]',
+		callback: function(teamerin) {
+			Meteor.getWorkshops().update({
+				_id: workshopId
+			},
+			{
+				$set: {
+					'verantwortlicher': teamerin
+				}
+			});
+		}
+	});
+};

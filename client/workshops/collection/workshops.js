@@ -12,6 +12,15 @@ Meteor.getWorkshops = function() {
 				}
 				
 				return 'Unbekannt?';
+			},
+			verantwortlicherStr: function(val, object) {
+				var teamerin = Meteor.users.findOne(this.verantwortlicher);
+
+				if (teamerin && teamerin.profile && teamerin.profile.name) {
+					return teamerin.profile.name;
+				}
+
+				return '';
 			}
 		});
 	}

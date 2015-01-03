@@ -1,5 +1,6 @@
 Router.configure({
-	layoutTemplate: 'Layout'
+	layoutTemplate: 'Layout',
+	loadingTemplate: 'loading'
 });
 
 // If not loged in:

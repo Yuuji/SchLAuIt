@@ -13,5 +13,12 @@ Workshops.allow({
 		}
 
 		return false;
+	},
+	update: function(userId, doc) {
+		if (Meteor.userId()) {
+			return true;
+		}
+
+		return false;
 	}
 });

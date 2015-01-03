@@ -29,7 +29,7 @@ $.fn.newSchule = function(options) {
 
 			var name = $('.popover-content input[name=name]').val();
 
-			var id = Schulen.insert({
+			var id = Meteor.getSchulen().insert({
 				name: name,
 				adresse: $('.popover-content input[name=adresse]').val()
 			});

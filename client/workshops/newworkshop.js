@@ -6,11 +6,7 @@ Router.route('newWorkshop', {
 		return Meteor.subscribe('Schulen');
 	},
 	data: function() {
-		try {
-			Schulen;
-		} catch (e) {
-			Schulen = new Mongo.Collection('schulen');
-		}
+		var Schulen = Meteor.getSchulen();
 
 		Template.newWorkshop.helpers({
 			settings: {

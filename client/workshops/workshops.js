@@ -25,22 +25,12 @@ Template.Workshops.helpers({
 					key: 'name',
 					label: 'Name',
 					fn: function(value, object) {
-						console.log(object);
 						return new Spacebars.SafeString('<a href="' + Router.path('Workshop', {id: object._id}) + '">' + value + '</a>');
 					}
 				},
 				{
-					key: 'schule',
-					label: 'Schule',
-					fn: function(value, object) {
-						var schule = Meteor.getSchulen().findOne(value);
-
-						if (schule && schule.name) {
-							return schule.name + ', ' + schule.adresse;
-						}
-
-						return 'Unbekannt?';
-					}
+					key: 'schuleStr',
+					label: 'Schule'
 				}
 			]
 		};

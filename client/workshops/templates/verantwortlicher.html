@@ -1,0 +1,8 @@
+<template name="Verantwortlicher">
+	<legend>Verantwortlicher f&uuml;r Workshop: {{workshop.name}} - {{workshop.schuleStr}}</legend>
+	<form method="POST" role="form">
+		<div class="form-group">
+			{{select_box 'teamerin' optionValues=teamerinnen}}
+		</div>
+	</form>
+</template>

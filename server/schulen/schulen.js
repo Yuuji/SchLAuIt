@@ -1,4 +1,4 @@
-Schulen = new Mongo.Collection("schulen");
+var Schulen = new Mongo.Collection('schulen');
 
 Meteor.publish('Schulen', function() {
 	if (this.userId) {

@@ -1,0 +1,20 @@
+<template name="Workshop">
+	<legend>Workshop: {{workshop.name}} - {{workshop.schuleStr}}</legend>
+	<div class="list-group">
+		<a href="{{pathFor 'Verantwortlicher' id=workshop._id}}" class="list-group-item {{#if status.verantwortlicher.status}}list-group-item-{{status.verantwortlicher.status}}{{/if}}">
+			<span class="glyphicon glyphicon-{{#if status.verantwortlicher.checked}}check{{else}}unchecked{{/if}}" aria-hidden="true"></span>&nbsp;Verantwortliche*r
+		</a>
+		<a href="#" class="list-group-item {{#if status.termin.status}}list-group-item-{{status.termin.status}}{{/if}}">
+			<span class="glyphicon glyphicon-{{#if status.termin.checked}}check{{else}}unchecked{{/if}}" aria-hidden="true"></span>&nbsp;Termin
+		</a>
+		<a href="#" class="list-group-item {{#if status.informationen.status}}list-group-item-{{status.informationen.status}}{{/if}}">
+			<span class="glyphicon glyphicon-{{#if status.informationen.checked}}check{{else}}unchecked{{/if}}" aria-hidden="true"></span>&nbsp;Informationen
+		</a>
+		<a href="#" class="list-group-item {{#if status.planung.status}}list-group-item-{{status.planung.status}}{{/if}}">
+			<span class="glyphicon glyphicon-{{#if status.planung.checked}}check{{else}}unchecked{{/if}}" aria-hidden="true"></span>&nbsp;Workshopplanung
+		</a>
+		<a href="#" class="list-group-item {{#if status.feedback.status}}list-group-item-{{status.feedback.status}}{{/if}}">
+			<span class="glyphicon glyphicon-{{#if status.feedback.checked}}check{{else}}unchecked{{/if}}" aria-hidden="true"></span>&nbsp;Feedback
+		</a>
+	</div>
+</template>

@@ -1,5 +1,5 @@
 Router.route('Teamerinnen', {
-	path: '/teamerinnen',
+	path: '/teamer_innen',
 	waitOn: function() {
 		if (Meteor.userId()) {
 			return Meteor.subscribe('Teamerinnen');

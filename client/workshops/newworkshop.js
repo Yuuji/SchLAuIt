@@ -1,9 +1,10 @@
-var Workshops = Meteor.getWorkshops();
-
 Router.route('newWorkshop', {
 	path: '/neuer-workshop',
 	waitOn: function() {
-		return Meteor.subscribe('Schulen');
+		return [
+			Meteor.subscribe('Schulen'),
+			Meteor.subscribe('Workshops')
+		];
 	},
 	data: function() {
 		var Schulen = Meteor.getSchulen();
@@ -54,7 +55,7 @@ Template.newWorkshop.events({
 		}
 
 		var data = SimpleForm.processForm(event.target);
-		Workshops.insert({
+		Meteor.getWorkshops().insert({
 			name: $('#name').val(),
 			schule: $('#schulid').val()
 		});

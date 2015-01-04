@@ -11,7 +11,12 @@ Router.route('Workshop', {
 			];
 		}
 	},
-	data: function() {
+	action: function () {
+		if (!this.ready()) {
+			this.render('Loading');
+			return;
+		}
+
 		workshopId = this.params.id;
 
 		var workshop = Meteor.getWorkshops().findOne(this.params.id);
@@ -30,7 +35,7 @@ Router.route('Workshop', {
 			status.verantwortlicher.status = 'success';
 		}
 		
-		return {workshop: workshop, status: status};
+		this.render('Workshop', {data: {workshop: workshop, status: status}});
 	}
 });
 

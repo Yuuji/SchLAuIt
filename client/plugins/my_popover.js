@@ -1,8 +1,5 @@
 $.fn.my_popover = function(options) { 
 	var that_ = this;
-	if ($('#my_popover').length === 0) {
-		$('body').append($(UI.toHTML(Template.my_popover)).hide());
-	}
 
 	if (typeof options === 'string') {
 		var el = $('#my_popover_shadow');
@@ -37,6 +34,9 @@ $.fn.my_popover = function(options) {
 
 		$('#my_popover').popoverX(options);
 	} else {
+		$('#my_popover').remove();
+		$('body').append($(UI.toHTML(Template.my_popover)).hide());
+		
 		$(this).data('my_popover_content', options.content())
 			   .data('my_popover_target', options.target)
 			   .data('my_popover_placement', options.placement)

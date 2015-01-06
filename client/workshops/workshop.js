@@ -24,8 +24,8 @@ Router.route('Workshop', {
 		// status: '', 'success', 'warning', 'danger'
 		var status = {
 			verantwortlicher: {checked: false, status: 'danger'},
+			informationen: {checked: false, status: ''},
 			termin: {checked: false, status: ''},
-			information: {checked: false, status: ''},
 			planung: {checked: false, status: ''},
 			feedback: {checked: false, status: ''}
 		};
@@ -33,6 +33,16 @@ Router.route('Workshop', {
 		if (workshop.verantwortlicher) {
 			status.verantwortlicher.checked = true;
 			status.verantwortlicher.status = 'success';
+
+			status.informationen.status = 'danger';
+			status.termin.status = 'warning';
+		}
+
+		if (workshop.informationen) {
+			status.informationen.checked = true;
+			status.informationen.status = 'success';
+
+			status.termin.status = 'danger';
 		}
 		
 		this.render('Workshop', {data: {workshop: workshop, status: status}});

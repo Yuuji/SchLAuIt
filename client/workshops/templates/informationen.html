@@ -1,0 +1,41 @@
+<template name="WorkshopInformationen">
+	<legend>Informationen f&uuml;r Workshop {{workshop.name}}</legend>
+
+	{{#with workshop.informationen}}
+	<form method="POST" role="form">
+		<div class="form-group">
+			{{text_field 'adresse' label="Adresse" value=adresse required=true}}
+		</div>
+		<div class="form-group">
+			{{text_field 'kontakt' label="Kontaktperson" value=kontakt required=true}}
+		</div>
+		<div class="form-group">
+			{{text_field 'telefon' label="Telefon" value=telefon required=true}}
+		</div>
+		<div class="form-group">
+			{{text_field 'email' label="E-Mail" value=email required=true}}
+		</div>
+		<div class="form-group">
+			{{text_field 'klassenstufe' label="Klassenstufe / Alter" value=klassenstufe required=true}}
+		</div>
+		<div class="form-group">
+			{{text_field 'gruppengroesse' label="Gruppengr&ouml;&szlig;e" value=gruppengroesse required=true}}
+		</div>
+		<div class="form-group">
+			{{text_field 'geschlechter' label="M&auml;dchen / Jungen" value=geschlechter}}
+		</div>
+		<div class="form-group">
+			{{text_field 'einbettung' label="In welchem Fach/Projekttag ist die Veranstaltung eingebettet? Inwieweit sind Sch&uuml;ler*innen schon über LSBT*-Lebensweisen informiert?" value=einbettung}}
+		</div>
+		<div class="form-group">
+			{{text_field 'gruppeninfos' label="Informationen zur Gruppe" value=gruppeninfos}}
+		</div>
+		<div class="form-group">
+			{{text_field 'sonstigeinfos' label="Sonstige Informationen" value=sonstigeinfos}}
+		</div>
+		<div class="form-group">
+			{{submit_button 'Speichern'}}
+		</div>
+	</form>
+	{{/with}}
+</template>

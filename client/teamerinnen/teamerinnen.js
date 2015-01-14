@@ -17,9 +17,22 @@ Template.Teamerinnen.helpers({
 			showNavigation: 'auto',
 			showColumnToggles: true,
 			fields: [
-				{key: 'profile.name', label: 'Name'},
+				{
+					key: 'profile.name',
+					label: 'Name',
+					fn: function(value, object) {
+						return new Spacebars.SafeString('<a href="' + Router.path('Profile', {id: object._id}) + '">' + value + '</a>');
+					}
+				},
 				{key: 'profile.email', label: 'E-Mail-Adresse'},
-				{key: 'profile.handynummer', label: 'Handynummer'}
+				{key: 'profile.handynummer', label: 'Handynummer'},
+				{
+					key: 'grundquali',
+					label: 'Qualifikation queer_school',
+					fn: function(value, object) {
+						return (value === 1 ? 'Ja' : 'Nein');
+					}
+				}
 			]
 		};
 	}

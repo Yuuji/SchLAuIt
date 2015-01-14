@@ -1,8 +1,8 @@
 <template name="Profile">
-	{{#with userdata}}
 	<form method="POST" role="form">
 		<legend>Profil</legend>
-
+		<input type="hidden" name="userId" value="{{userId}}" />
+	{{#with userdata}}
 		<div class="form-group">
 			{{text_field 'name' value=name required=true}}
 		</div>
@@ -14,10 +14,10 @@
 		<div class="form-group">
 			{{text_field 'handynummer' value=handynummer required=true}}
 		</div>
+	{{/with}}
 
 		{{submit_button 'Speichern'}}
 	</form>
-	{{/with}}
 </template>
 
 <template name="_loginButtonsAdditionalLoggedInDropdownActions">

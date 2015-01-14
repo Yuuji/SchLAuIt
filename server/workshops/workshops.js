@@ -7,8 +7,9 @@ Meteor.publish('Workshops', function() {
 });
 
 Workshops.allow({
-	'insert': function(userId, doc) {
+	insert: function(userId, doc) {
 		if (Meteor.userId()) {
+			doc.createdAt = (new Date()).toString();
 			return true;
 		}
 

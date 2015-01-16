@@ -48,16 +48,18 @@ Template.newWorkshop.rendered = function() {
 
 Template.newWorkshop.events({
 	'submit form': function(event) {
+		event.preventDefault();
 		if ($('#schulid').val()==='') {
 			alert($('<span>Bitte eine Schule ausw&auml;hlen!</span>').text());
-			event.preventDefault();
 			return;
 		}
 
 		var data = SimpleForm.processForm(event.target);
-		Meteor.getWorkshops().insert({
+		var id = Meteor.getWorkshops().insert({
 			name: $('#name').val(),
 			schule: $('#schulid').val()
 		});
+
+		Router.go('Workshop', {id: id});
 	}
 });

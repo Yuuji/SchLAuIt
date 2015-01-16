@@ -55,7 +55,8 @@ Template.Profile.events({
 			$set: {
 				'profile.name': data.name,
 				'profile.email': data.email,
-				'profile.handynummer': data.handynummer
+				'profile.handynummer': data.handynummer,
+				'profile.grundquali': data.grundquali
 			}
 		});
 	}

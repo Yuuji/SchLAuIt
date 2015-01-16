@@ -27,10 +27,10 @@ Template.Teamerinnen.helpers({
 				{key: 'profile.email', label: 'E-Mail-Adresse'},
 				{key: 'profile.handynummer', label: 'Handynummer'},
 				{
-					key: 'grundquali',
+					key: 'profile.grundquali',
 					label: 'Qualifikation queer_school',
 					fn: function(value, object) {
-						return (value === 1 ? 'Ja' : 'Nein');
+						return (value === 'true' ? 'Ja' : 'Nein');
 					}
 				}
 			]

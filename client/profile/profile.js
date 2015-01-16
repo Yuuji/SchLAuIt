@@ -59,5 +59,9 @@ Template.Profile.events({
 				'profile.grundquali': data.grundquali
 			}
 		});
+
+		if (data.userId !== Meteor.userId()) {
+			Router.go('Teamerinnen');
+		}
 	}
 });
